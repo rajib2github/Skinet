@@ -23,6 +23,7 @@ namespace API
         {
             services.AddControllers();
             services.AddScoped<IProductRepository,ProductRepository>();
+            services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
             services.AddDbContext<StoreContext>(x =>
                 x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
         }
